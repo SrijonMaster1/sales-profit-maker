@@ -90,6 +90,8 @@ Example: https://www.analyticsvidhya.com/wp-content/uploads/2016/07/Vendor_Data.
           -- adjusted_volume = original_units_sold * sales_multipler * transaction_multiplier
           
           -- calculate final profit using the adjusted_price and adjusted_volume
+          
+          -- est_profit = (adjusted_price * adjusted_volume) - (original_cost * adjusted_volume)
 
 6) Show Final Profit Summary and Report in UI
 
