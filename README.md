@@ -32,6 +32,7 @@ The App can be deployed in cloud using app.yaml or can be executed in a containe
 python MainApp.py
 
 Internally, the app will start the server in a specified port
+
 app.run_server(host='0.0.0.0', port=8088, debug=True, use_reloader=True)
 
 By default it will run in local machine.
@@ -43,30 +44,51 @@ By default it will run in local machine.
 Screenshot 1: 
 
 2) User uploads the Sales data
+
 Example: https://www.analyticsvidhya.com/wp-content/uploads/2016/07/Vendor_Data.csv
 
 3) MainApp calls SalesProfitEstimator
+
    -- SalesProfitEstimator calculate the current profit based on existing sales data. It doesn't use any algorithm.
+   
    -- Next it tries to estimate the price of each item through multiple iterations. 
+   
    -- The loop will stop when either estimated profit doesn't change or it has reached maximum iterations.
-   -- Within each iteration The Algorithm applies following Business Rules (modules/PriceCalculator.py)
+   
+   -- Within each iteration The Algorithm applies following Business Rules to find proposed change in price (modules/PriceCalculator.py)
+   
           -- decrese the price if incr_cvr and incr_sales already high (this is one approach - we can also try other way round)
+          
           -- increase the price if incr_cvr and incr_sales are low (we can do the reverse and test if this this approach offers better result)
+          
           -- decrease the price if price and units_sold are already high. 
+          
           -- increase the price if price and units_sold are already low.
+          
           -- ensure the new price always within the range 10% below base price and 20% above base price
+   
    -- once the change in price is dertermined by PriceCalculator, then ProfitCalculator.py creates the profit by using following rules
+          
           -- price_change_multiplier = 1 + price_change_val (determined in previous step)
+          
           -- adjusted_price = original_unit_price * price_change_multiplier
+          
           -- if (price_reduction):
+          
                  sales_incr_per_tx = incr_sales*abs(price_change_val)*10
+                 
                  customer_incr = incr_cvr*abs(price_change_val)*10
+             
              else:
+             
                  customer_incr = incr_cvr_default
 
           -- sales_multipler = 1 + sales_incr_per_tx
+          
           -- transaction_multiplier = 1 + customer_incr
+          
           -- adjusted_volume = original_units_sold * sales_multipler * transaction_multiplier
+          
           -- calculate final profit using the adjusted_price and adjusted_volume
 
 6) Show Final Profit Summary and Report in UI
@@ -84,7 +106,8 @@ Screenshot2:
 # Future Work
 
 1) User Login 
-2) Allow user to upload historical data with user info and calculate incr_cvr and incr_sales
+
+3) Allow user to upload historical data with user info and calculate incr_cvr and incr_sales
 
 # References
 
