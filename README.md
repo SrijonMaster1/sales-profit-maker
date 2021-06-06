@@ -4,8 +4,7 @@ Learn a concept in Banking and Finance domain and create an App to demonstrate t
 
 Here I have tried to learn the concept of increasing Financial Gain by learning how to optimize the price of sold goods.
 
-I have followed this website to learn the basic idea
-https://www.analyticsvidhya.com/blog/2016/07/solving-case-study-optimize-products-price-online-vendor-level-hard/
+Some basic features related to sales of items:
 
 -- Average Price/Unit : Market price of the product
 
