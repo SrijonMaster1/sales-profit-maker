@@ -48,6 +48,8 @@ DASH allows the creation of web components (html, css) in python.
 
 The App can be deployed in cloud using app.yaml or can be executed in a container using Dockerfile.dash
 
+Used Visual Studios Code as the development environment with Github Desktop for code management.
+
 # App Execution:
 
 python MainApp.py
