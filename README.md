@@ -137,7 +137,12 @@ Screenshot 2: https://github.com/srijon-mandal/sales-profit-maker/blob/main/Fina
 
 1) User Login 
 
-3) Allow user to upload historical data with user info and calculate incr_cvr and incr_sales
+2) Allow user to upload historical data with user info and calculate incr_cvr and incr_sales
+
+3) Create a Dashboard and show the insights and patterns discovered from the raw sales data
+
+4) Store the profit data in MongoDB
+
 
 # References
 
