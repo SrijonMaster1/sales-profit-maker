@@ -73,11 +73,11 @@ Example: https://www.analyticsvidhya.com/wp-content/uploads/2016/07/Vendor_Data.
 
    -- SalesProfitEstimator calculate the current profit based on existing sales data. It doesn't use any algorithm.
    
-   -- Next it tries to estimate the price of each item through multiple iterations. 
+   -- Next it tries to estimate the next best price of each item through multiple iterations. 
    
-   -- The loop will stop when either estimated profit doesn't change or it has reached maximum iterations.
+   -- The loop will stop when either estimated profit doesn't change or it has reached maximum no. of iterations.
    
-   -- Within each iteration The Algorithm applies following Business Rules to find proposed change in price (modules/PriceCalculator.py)
+   -- Within each iteration, the Algorithm applies following Business Rules to find proposed change in price (modules/PriceCalculator.py)
    
           -- decrese the price if incr_cvr and incr_sales already high (this is one approach - we can also try other way round)
           
@@ -119,13 +119,17 @@ Example: https://www.analyticsvidhya.com/wp-content/uploads/2016/07/Vendor_Data.
 
 For example,
 
+Sales data file: vendor_data.csv
+
 Profit without Optimization: 3285.90
 
-Net Estimated Profit: 4772.95 , LIFT by [45.26 %]
+Net Estimated Profit: 5728.75 , LIFT by [74.34 %]
 
-Increase in Total Pricing: 879.47, [5.80 %]
+Increase in Total Pricing: 1424.67, [9.40 %]
 
-Increase in Total Units Sold: 18.76 %, [5 %]
+Increase in Total Units Sold: 18.76, [5.00 %]
+
+We can clearly see that one can achieve pretty impressive Financial Gain (74%) at the cost of selling 5% more goods and increasing the price only by 9%
 
 Screenshot 2: https://github.com/srijon-mandal/sales-profit-maker/blob/main/FinalUI.jpeg
 
