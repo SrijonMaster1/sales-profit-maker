@@ -1,20 +1,15 @@
-
-=======
-# Sales-Profit-Maker
-
 # App Name: 
-Maximize Sales Profit
+Sales Profit Maximizer
 
 # App Goal: 
 
+Let's assume, a Company sells products and is looking for a way to maximize the profits.  
 
-Let's assume, a Company sells products and is looking for a way to maximize the profits.  This App finds the best estimated price for all the products based on the sales data.
+This App can help find the best estimated price for all the products based on the sales data so that it can achieve its Financial Goal.
 
-In Finance, there is a concept of increasing Conversion Rate and Increasing Demand by decreasing Price.
+In Finance, there is a concept of increasing Conversion Rate and increasing Demand by decreasing Price.
 
-The data contains avg_unit_price , avg_unit_quantity and avg_unit_cost along with incr_cvr and incr_sales for every item.
-
-This Pricing strategy can help increase the profit significantly.
+The Sales data contains average unit_price , avgerage unit_quantity_sold and average unit_cost along with incr_cvr and incr_sales for every item.
 
 When a company generates the sales data , incr_cvr  and incr_sales are calculated from the historical dataset.
 
@@ -22,41 +17,59 @@ incr_cvr is increase in conversion rate for every 10% decrease in price that mea
 
 incr_sales is increase in sales for every 10% decrease in price, that means %of increase in quantity of same product purchased by a customer.
 
-# App Setup:
+This Pricing strategy can help increase the profit significantly.
 
-DASK library is used to create a container for running a Flask python App. 
+# App Tools & Technology:
 
-DASK allows the creation of web components in python. 
+DASH library is used for running Flask python Web App. 
 
-The App can be deployed in cloud using app.yaml
+DASH allows the creation of web components (html, css) in python. 
+
+The App can be deployed in cloud using app.yaml or can be executed in a container using Dockerfile.dash
+
+# App Execution:
+
+python MainApp.py
+
+Internally, the app will start the server in a specified port
+app.run_server(host='0.0.0.0', port=8088, debug=True, use_reloader=True)
 
 By default it will run in local machine.
 
 # App Workflow:
 
-1) Once the App is started MainApp.py generates the UI to upload the Sales Data
-
-Pricing-Strategy python MainApp Up 0.0.0.0:8081->8088/tcp
-
-http://0.0.0.0/8081
+1) Once the App is started, MainApp.py generates the UI to upload the Sales Data
 
 Screenshot 1: 
 
-
-2) User Logs into App (Not implemented)
-
-3) User uploads the Sales data
+2) User uploads the Sales data
 Example: https://www.analyticsvidhya.com/wp-content/uploads/2016/07/Vendor_Data.csv
 
-4) MainApp calls SalesProfitEstimator
+3) MainApp calls SalesProfitEstimator
+   -- SalesProfitEstimator calculate the current profit based on existing sales data. It doesn't use any algorithm.
+   -- Next it tries to estimate the price of each item through multiple iterations. 
+   -- The loop will stop when either estimated profit doesn't change or it has reached maximum iterations.
+   -- Within each iteration The Algorithm applies following Business Rules (modules/PriceCalculator.py)
+          -- decrese the price if incr_cvr and incr_sales already high (this is one approach - we can also try other way round)
+          -- increase the price if incr_cvr and incr_sales are low (we can do the reverse and test if this this approach offers better result)
+          -- decrease the price if price and units_sold are already high. 
+          -- increase the price if price and units_sold are already low.
+          -- ensure the new price always within the range 10% below base price and 20% above base price
+   -- once the change in price is dertermined by PriceCalculator, then ProfitCalculator.py creates the profit by using following rules
+          -- price_change_multiplier = 1 + price_change_val (determined in previous step)
+          -- adjusted_price = original_unit_price * price_change_multiplier
+          -- if (price_reduction):
+                 sales_incr_per_tx = incr_sales*abs(price_change_val)*10
+                 customer_incr = incr_cvr*abs(price_change_val)*10
+             else:
+                 customer_incr = incr_cvr_default
 
-5) The Algorithm tries to decrease the price if incr_cvr and incr_sales already high and decrease the price if incr_cvr and incr_sales are low. 
+          -- sales_multipler = 1 + sales_incr_per_tx
+          -- transaction_multiplier = 1 + customer_incr
+          -- adjusted_volume = original_units_sold * sales_multipler * transaction_multiplier
+          -- calculate final profit using the adjusted_price and adjusted_volume
 
-It also checks if price and units_sold are already high then reduce it. 
-
-It also checks if price and units_sold are already low then increase it.
-
-6) Final Profit and Report is display in UI
+6) Show Final Profit Summary and Report in UI
 
 Profit without Optimization: 3285.90
 
@@ -70,12 +83,13 @@ Screenshot2:
 
 # Future Work
 
-1) Allow user to upload historical data with user info and calculate incr_cvr and incr_sales
+1) User Login 
+2) Allow user to upload historical data with user info and calculate incr_cvr and incr_sales
 
 # References
 
 https://www.analyticsvidhya.com/blog/2016/07/solving-case-study-optimize-products-price-online-vendor-level-hard/
 
 https://www.coursera.org/lecture/uva-darden-bcg-pricing-strategy-cost-economics/price-elasticities-KJaeh
->>>>>>> 3414c358baa0a8e1f20a8453caae85d1246dbf3a
-aa
+
+
