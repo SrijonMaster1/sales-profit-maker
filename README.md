@@ -118,6 +118,8 @@ Example: https://www.analyticsvidhya.com/wp-content/uploads/2016/07/Vendor_Data.
 
 6) Show Final Profit Summary and Report in UI
 
+For example,
+
 Profit without Optimization: 3285.90
 
 Net Estimated Profit: 4772.95 , LIFT by [45.26 %]
