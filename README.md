@@ -62,7 +62,7 @@ By default it will run in local machine.
 
 1) Once the App is started, MainApp.py generates the UI to upload the Sales Data
 
-Screenshot 1: 
+Screenshot 1: https://github.com/srijon-mandal/sales-profit-maker/blob/main/Initial_UI.jpeg
 
 2) User uploads the Sales data
 
@@ -124,7 +124,7 @@ Increase in Total Pricing: 879.47, [5.80 %]
 
 Increase in Total Units Sold: 18.76 %, [5 %]
 
-Screenshot2: 
+Screenshot 2: https://github.com/srijon-mandal/sales-profit-maker/blob/main/FinalUI.jpeg
 
 # Future Work
 
