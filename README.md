@@ -1,3 +1,24 @@
+# Hackathon Objective
+
+Learn a concept in Banking and Finance domain and create an App to demonstrate the concept.
+
+Here I have tried to learn the concept of increasing Financial Gain by learning how to optimize the price of sold goods.
+
+I have follwed this website to get the basic idea
+https://www.analyticsvidhya.com/blog/2016/07/solving-case-study-optimize-products-price-online-vendor-level-hard/
+
+-- Average Price/Unit : Market price of the product
+
+-- Cost/Unit : Current cost of the product
+
+-- Average Profit/Unit : Profit for each unit
+
+-- Average units sold : Average number of units of product sold to a customer who makes a purchase
+
+-- Incremental acquisition : For every 10% decline in unit price, this is the increase in total customer response rate. Note that overall response rate initially is 5% (5000 out of 100000 make a purchase). You are allowed to decrease the price of a product maximum by 10% by market laws.
+
+-- Increase in sale volume : For every 10% decline in unit price of product, this is the increase in volume. Again, you are allowed to decrease the price of a product maximum by 10% by market laws.
+
 # App Name: 
 Sales Profit Maximizer
 
@@ -5,7 +26,7 @@ Sales Profit Maximizer
 
 Let's assume, a Company sells products and is looking for a way to maximize the profits.  
 
-This App can help find the best estimated price for all the products based on the sales data so that it can achieve its Financial Goal.
+This App can help find the best estimated price for all the products based on the sales data so that the company can achieve its Financial Goal.
 
 In Finance, there is a concept of increasing Conversion Rate and increasing Demand by decreasing Price.
 
